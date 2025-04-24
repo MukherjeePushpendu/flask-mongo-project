@@ -17,8 +17,15 @@ def get_data():
         data = json.load(file)
     return jsonify(data)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def form():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        role = request.form.get('role')
+        if not name or not role:
+            return render_template('form.html', error="Name and role are required")
+        # Here you can add code to save the user to MongoDB if needed
+        return render_template('success.html')
     return render_template('form.html')
 
 @app.route('/todo')
