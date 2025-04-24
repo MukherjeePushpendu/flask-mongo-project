@@ -1,8 +1,7 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for
-import json
+from flask import Flask, jsonify, render_template, request
 from pymongo import MongoClient
+import json
 import uuid
-import hashlib
 
 app = Flask(__name__)
 
@@ -17,28 +16,8 @@ def get_data():
         data = json.load(file)
     return jsonify(data)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def form():
-    if request.method == 'POST':
-        try:
-            name = request.form['name']
-            role = request.form['role']
-            
-            # Read existing data
-            with open('data.json', 'r') as file:
-                data = json.load(file)
-            
-            # Add new entry
-            data.append({"name": name, "role": role})
-            
-            # Write back to file
-            with open('data.json', 'w') as file:
-                json.dump(data, file, indent=2)
-            
-            return render_template('success.html')
-        except Exception as e:
-            return render_template('form.html', error=str(e))
-    
     return render_template('form.html')
 
 @app.route('/todo')
@@ -50,11 +29,10 @@ def submit_todo():
     try:
         item_id = request.form.get('itemId')
         item_uuid = request.form.get('itemUuid')
-        item_hash = request.form.get('itemHash')
         item_name = request.form.get('itemName')
         item_description = request.form.get('itemDescription')
         
-        if not all([item_id, item_uuid, item_hash, item_name, item_description]):
+        if not all([item_id, item_uuid, item_name, item_description]):
             return render_template('todo.html', error="All fields are required")
         
         # Check if item ID already exists
@@ -65,7 +43,6 @@ def submit_todo():
         todo_item = {
             'id': item_id,
             'uuid': item_uuid,
-            'hash': item_hash,
             'name': item_name,
             'description': item_description
         }
