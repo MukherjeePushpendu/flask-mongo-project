@@ -26,14 +26,20 @@ def todo():
 @app.route('/submittodoitem', methods=['POST'])
 def submit_todo():
     try:
+        item_id = request.form.get('itemId')
         item_name = request.form.get('itemName')
         item_description = request.form.get('itemDescription')
         
-        if not item_name or not item_description:
-            return render_template('todo.html', error="Both item name and description are required")
+        if not item_id or not item_name or not item_description:
+            return render_template('todo.html', error="All fields are required")
+        
+        # Check if item ID already exists
+        if todos.find_one({'id': item_id}):
+            return render_template('todo.html', error="Item ID already exists")
         
         # Insert into MongoDB
         todo_item = {
+            'id': item_id,
             'name': item_name,
             'description': item_description
         }
