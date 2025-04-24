@@ -11,6 +11,10 @@
             <div class="card-body">
                 <form action="/submittodoitem" method="POST">
                     <div class="mb-3">
+                        <label for="itemId" class="form-label">Item ID</label>
+                        <input type="text" class="form-control" id="itemId" name="itemId" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="itemName" class="form-label">Item Name</label>
                         <input type="text" class="form-control" id="itemName" name="itemName" required>
                     </div>
