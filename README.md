@@ -1,67 +1,68 @@
-# Flask User Management Application
+# Todo Application with Flask Backend and Express Frontend
 
-A simple Flask web application for managing user data with a form interface and REST API endpoint.
-
-## Features
-
-- Web form to add new users
-- REST API endpoint to view all users
-- Data persistence using JSON file
-- Error handling for form submissions
+This is a full-stack Todo application with a Flask backend and Express frontend, containerized using Docker.
 
 ## Project Structure
 
 ```
-.
-├── app.py              # Main Flask application
-├── data.json           # JSON file storing user data
-├── templates/          # HTML templates
-│   ├── form.html      # User input form
-│   └── success.html   # Success message template
-└── README.md          # This file
+project-root/
+│
+├── frontend/          # Node.js with Express
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── index.js
+│   └── views/
+│       └── form.ejs
+│
+├── backend/           # Flask backend
+│   ├── Dockerfile
+│   ├── app.py
+│   ├── requirements.txt
+│
+├── docker-compose.yaml
+└── README.md
 ```
 
-## Setup
+## Prerequisites
 
-1. Make sure you have Python installed
-2. Install the required packages:
-   ```bash
-   pip install flask
-   ```
+- Docker
+- Docker Compose
+- Git
 
-## Running the Application
+## Getting Started
 
-1. Start the Flask server:
-   ```bash
-   python app.py
-   ```
-2. The application will be available at `http://127.0.0.1:5000`
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
 
-## Usage
+2. Build and start the containers:
+```bash
+docker-compose up --build
+```
 
-### Web Interface
-- Visit `http://127.0.0.1:5000/` to access the form
-- Fill in the name and role fields
-- Submit the form to add a new user
+3. Access the application:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5000
 
-### API Endpoint
-- Access `http://127.0.0.1:5000/api` to view all users in JSON format
-- The API returns data in the following format:
-  ```json
-  [
-    {"name": "Pushpendu", "role": "Developer"},
-    {"name": "John", "role": "Tester"}
-  ]
-  ```
+## Features
 
-## Error Handling
+- Create and manage todo items
+- MongoDB database integration
+- Docker containerization
+- Separate frontend and backend services
 
-- The application includes basic error handling for form submissions
-- Error messages will be displayed on the form page if something goes wrong
+## Docker Images
 
-## Development
+The Docker images are available on Docker Hub:
+- Frontend: `<your-dockerhub-username>/todo-frontend`
+- Backend: `<your-dockerhub-username>/todo-backend`
 
-The application runs in debug mode, which provides:
-- Automatic reloading when code changes
-- Detailed error messages
-- Debugger PIN for development purposes 
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request 

@@ -1,0 +1,13 @@
+[33m820ac20[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Merge master_1: Add all form fields
+[33md27c505[m[33m ([m[1;32mmaster_1[m[33m)[m Add Item Hash field to To-Do form
+[33m6cc4263[m Add Item UUID field to To-Do form
+[33ma886ee8[m Add Item ID field to To-Do form
+[33m4f854f4[m[33m ([m[1;31morigin/main[m[33m)[m Merge master_1: Add Item ID field to To-Do form
+[33m493a3d9[m[33m ([m[1;31morigin/master_1[m[33m)[m Add Item ID field to To-Do form
+[33m7b223e3[m Merged master_1 and master_2: Combined todo frontend and MongoDB backend
+[33ma991bdc[m[33m ([m[1;31morigin/master_2[m[33m, [m[1;32mmaster_2[m[33m)[m Added MongoDB integration and todo submission endpoint in master_2
+[33m1041e32[m Added todo page frontend in master_1
+[33m41e1d9f[m[33m ([m[1;32mpushpendu_new[m[33m)[m Updated JSON for API response
+[33m49ee39e[m[33m ([m[1;32mpushpendu[m[33m)[m Merge remote changes and resolve conflicts
+[33m5ad200f[m Initial commit: Flask User Management Application
+[33m17bb63a[m Initial commit
