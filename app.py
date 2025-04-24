@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
 import json
 from pymongo import MongoClient
+import uuid
+import hashlib
 
 app = Flask(__name__)
 
@@ -47,10 +49,12 @@ def todo():
 def submit_todo():
     try:
         item_id = request.form.get('itemId')
+        item_uuid = request.form.get('itemUuid')
+        item_hash = request.form.get('itemHash')
         item_name = request.form.get('itemName')
         item_description = request.form.get('itemDescription')
         
-        if not item_id or not item_name or not item_description:
+        if not all([item_id, item_uuid, item_hash, item_name, item_description]):
             return render_template('todo.html', error="All fields are required")
         
         # Check if item ID already exists
@@ -60,6 +64,8 @@ def submit_todo():
         # Insert into MongoDB
         todo_item = {
             'id': item_id,
+            'uuid': item_uuid,
+            'hash': item_hash,
             'name': item_name,
             'description': item_description
         }
